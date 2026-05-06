@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, observerOptions);
 
     // Animate service cards and contact cards on scroll
-    document.querySelectorAll(".service-card, .contact-card, .info-item").forEach(function (el) {
+    document.querySelectorAll(".service-card, .contact-card, .info-item, .price-item").forEach(function (el) {
         el.style.opacity = "0";
         el.style.transform = "translateY(20px)";
         el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
