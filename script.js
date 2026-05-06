@@ -119,4 +119,33 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(el);
     });
 
+    // ========== QR Code Generation ==========
+    const qrContainer = document.getElementById("qrcode");
+    const qrUrlLink = document.getElementById("qrUrl");
+
+    if (qrContainer) {
+        // Use the current website URL for the QR code
+        var websiteUrl = window.location.href;
+
+        // Fallback: if running locally, use a placeholder URL
+        if (websiteUrl.startsWith("file://") || websiteUrl === "" || websiteUrl === "about:blank") {
+            websiteUrl = "https://megadiagnosticcentre.com";
+        }
+
+        // Generate QR Code
+        new QRCode(qrContainer, {
+            text: websiteUrl,
+            width: 200,
+            height: 200,
+            colorDark: "#1a6bc4",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // Update the "Open Website" link
+        if (qrUrlLink) {
+            qrUrlLink.href = websiteUrl;
+        }
+    }
+
 });
